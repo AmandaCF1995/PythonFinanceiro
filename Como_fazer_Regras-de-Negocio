@@ -3,7 +3,7 @@ regra de Alteração dos dados salvos no botão Editar, comando para inativar fo
 A camada de negócios se comunica com todas as outras três (Apresentacao, OT que é get e set, AcessoDados) e com o banco.
 Fazer captura de erro (try catch)
 
-As regras de negócio estrão nos arquivos:
+As regras de negócio serão os arquivos:
 
 ArrecadacaoNegocios
 PrejuizoNegocios
