@@ -1,0 +1,18 @@
+#import Apresentacao.py
+import MySQLdb as sql
+
+def conexaoBanco():
+    BANCO="estagio"
+    USER="root"
+    PASSWD=""
+    HOST="127.0.0.1"
+
+    try:
+        con= MySQLdb.connect(db= BANCO, user=USER,passwd=PASSWD, host=HOST)
+        print("Conectado com sucesso")
+    except MySQLdb as erro:
+        print("ERRO.Não conectado!", erro)
+       # menu()
+
+        return con
+
