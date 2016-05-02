@@ -1,0 +1,603 @@
+#!/usr/local/bin/python
+# latin-1
+import os
+import sys
+import gettext
+from math import *
+from Tkinter import *
+#import OT.py #importando a objeto transferencia
+#import Negocios.py
+#import AcessoDados.py
+from random import *
+import StringIO
+   
+class Window(Tk):
+    def __init__(self, parent):
+        Tk.__init__(self, parent)
+        self.parent = parent
+        self.initialize()
+
+#Faltam campos formatados, funções, looping e somas  
+        
+    def initialize(self):
+
+        self.geometry("300x300")
+
+        #botões que chamam telas child
+        
+        wButton = Button(self, text='Arrecadação Bruta', width= 17,bd=3, command = self.OnButtonClickUm)
+
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+        
+        wButton = Button(self, text='Arrecadação Bruta', width= 17,bd=3, command = self.OnButtonClickUm)
+        wButton.pack(anchor= E, expand=YES) ##abre a um
+        wButton = Button(self, text='Custo de Manutenção', width= 17,bd=3, command = self.OnButtonClickDois)
+        wButton.pack(anchor= W, expand=YES) ##abre a dois
+        wButton = Button(self, text='Lucro Real', width= 17,bd=3, command = self.OnButtonClickTres)
+        wButton.pack(anchor= E, expand=YES) ##abre a tres
+        wButton = Button(self, text='Finanças Pessoais', width= 17,bd=3, command = self.OnButtonClickQuatro)
+        wButton.pack(anchor= W, expand=YES) ##abre a quatro
+        wButton = Button(self, text='Cliente', width= 17,bd=3, command = self.OnButtonClickCinco)
+        wButton.pack(anchor= E, expand=YES) ##abre a cinco
+        wButton = Button(self, text='Condicional', width= 17,bd=3, command = self.OnButtonClickSeis)
+        wButton.pack(anchor= W, expand=YES) ##abre a seis
+        wButton = Button(self, text='Contabilizar prejuízo', width= 17,bd=3, command = self.OnButtonClickSete)
+        wButton.pack(anchor= E, expand=YES) ##abre a sete
+        wButton = Button(self, text='Relatório', width= 17,bd=3, command = self.OnButtonClickOito)
+        wButton.pack(anchor= W, expand=YES) ##abre a oito
+ 
+        
+    def OnButtonClickUm(self):
+
+        wButton.pack(anchor= E, expand=YES) ##abre a um
+
+        wButton = Button(self, text='Custo de Manutenção', width= 17,bd=3, command = self.OnButtonClickDois)
+        wButton.pack(anchor= W, expand=YES) ##abre a dois
+
+        wButton = Button(self, text='Lucro Real', width= 17,bd=3, command = self.OnButtonClickTres)
+        wButton.pack(anchor= E, expand=YES) ##abre a tres
+
+        wButton = Button(self, text='Finanças Pessoais', width= 17,bd=3, command = self.OnButtonClickQuatro)
+        wButton.pack(anchor= W, expand=YES) ##abre a quatro
+
+        wButton = Button(self, text='Cliente', width= 17,bd=3, command = self.OnButtonClickCinco)
+        wButton.pack(anchor= E, expand=YES) ##abre a cinco
+
+        wButton = Button(self, text='Condicional', width= 17,bd=3, command = self.OnButtonClickSeis)
+        wButton.pack(anchor= W, expand=YES) ##abre a seis
+
+        wButton = Button(self, text='Contabilizar prejuízo', width= 17,bd=3, command = self.OnButtonClickSete)
+        wButton.pack(anchor= E, expand=YES) ##abre a sete
+
+        wButton = Button(self, text='Relatório', width= 17,bd=3, command = self.OnButtonClickOito)
+        wButton.pack(anchor= W, expand=YES) ##abre a oito
+
+ 
+        
+    def OnButtonClickUm(self):
+
+            
+        um = Toplevel(background="#f5deb3")
+        um.title("Arrecadação")
+        um.geometry("300x610")
+
+        um.transient(self)
+
+        umButton = Button(um, text="FECHAR TUDO",width= 13, command = self.destroy)
+        umButton.pack(side= BOTTOM)
+        
+# botões basicos vinculados ao banco
+
+        bt1= Button(um, background= "#fffacd",width= 13, text = "Salvar") #vincular o command onclick_Salvar
+        bt1.pack(side= BOTTOM)
+
+        bt2= Button(um,background= "#fffacd",width= 13, text = "Editar")
+        bt2.pack(side= BOTTOM)
+
+        bt3= Button(um,background= "#fffacd",width= 13, text = "Consultar")
+        bt3.pack(side= BOTTOM)
+
+        bt4= Button(um,background= "#fffacd",width= 13, text = "Inativar")
+        bt4.pack(side= BOTTOM)
+
+#gerado identity pelo banco
+
+        ID = Label(um,text="Código:", background= "#f5deb3", anchor=W, justify=LEFT)
+        ID.pack(anchor= NW)
+        LerID = Entry(um)
+        LerID.pack(anchor= NW)
+     
+        DataHora = Label(um,text="Data e hora:",background= "#f5deb3")
+        DataHora.pack(anchor= NW)
+        LerDataHora = Entry(um)
+        LerDataHora.pack(anchor= NW)
+
+        NR = Label(um,text="Novo registro de arrecadação ?",background= "#f5deb3")        
+        NR.pack(anchor= NW)
+
+        LerNovo=[('Sim', 1), ('Não', 2)]
+        var = IntVar()
+        for text, value in LerNovo:
+            Radiobutton(um, text=text, value=value, variable=var, background= "#f5deb3").pack(anchor=W)
+        var.set(2)
+        
+# se LerNovo = Sim, cadastra uma nova venda
+        
+#while(Novo == true):
+    
+    
+        CodProduto = Label(um,text="Código Produto:",background= "#f5deb3")
+        CodProduto.pack(anchor= NW)
+        LerCodProduto = Entry(um,background= "lightblue")
+        LerCodProduto.pack(anchor= NW)
+      #  LerCodProduto = Text(um, width=15, height=1.3, bd=1,background= "lightblue", relief = RIDGE) #outro modo de fazer text box
+      #  LerCodProduto.pack(anchor = NW)
+
+        VU = Label(um,text="Valor Unitário:",background= "#f5deb3")
+        VU.pack(anchor= NW)
+        LerVU = Entry(um,background= "lightblue")
+        LerVU.pack(anchor= NW)       
+         
+
+        Qtd = Label(um,text="Quantidade:",background= "#f5deb3")
+        Qtd.pack(anchor= NW)
+        LerQtd = Entry(um,background= "lightblue")
+        LerQtd.pack(anchor= NW) 
+  
+        
+        Subtotal = Label(um,text="Subtotal:",background= "#f5deb3")
+        Subtotal.pack(anchor= NW)
+        LerSubtotal = Entry(um,background= "lightblue")
+        LerSubtotal.pack(anchor= NW) 
+
+        VD = Label(um,text="Valor Descontado:",background= "#f5deb3")
+        VD.pack(anchor= NW)
+        LerVD = Entry(um,background= "lightblue")
+        LerVD.pack(anchor= NW) 
+
+        VF = Label(um,text="Valor Final:",background= "#f5deb3")
+        VF.pack(anchor= NW)
+        LerVF = Entry(um,background= "lightblue")
+        LerVF.pack(anchor= NW)
+        
+# end while
+
+#quando while= não, encerra o dia de vendas e exibe a soma de dinheiro do dia
+
+        SD = Label(um,text="Soma do dia:",background= "#f5deb3")
+        SD.pack(anchor= NW)
+        LerSD = Entry(um)
+        LerSD.pack(anchor= NW)
+
+    def OnButtonClickDois(self):
+        dois = Toplevel(background="#fff0f5")
+        dois.title("Custos Manutenção")
+        dois.geometry("300x350")
+
+        dois.transient(self)
+
+        doisButton = Button(dois, text="FECHAR TUDO",width= 13, command = self.destroy)
+        doisButton.pack(side= BOTTOM)
+
+        bt1= Button(dois, background= "#fffacd",width= 13, text = "Salvar") #vincular o command onclick_Salvar
+        bt1.pack(side= BOTTOM)
+
+        bt2= Button(dois,background= "#fffacd",width= 13, text = "Editar")
+        bt2.pack(side= BOTTOM)
+
+        bt3= Button(dois,background= "#fffacd",width= 13, text = "Consultar")
+        bt3.pack(side= BOTTOM)
+
+        bt4= Button(dois,background= "#fffacd",width= 13, text = "Inativar")
+        bt4.pack(side= BOTTOM)
+
+
+
+        CodigoFP = Label(dois,text="Código do registro de custos:", background= "#fff0f5", anchor=W, justify=LEFT) #identity
+        CodigoFP.pack(anchor= NW)
+        LerCodigoFP = Entry(dois)
+        LerCodigoFP.pack(anchor= NW)
+
+
+        Nome = Label(dois,text="Descrição do pagamento feito:", background= "#fff0f5", anchor=W, justify=LEFT)
+        Nome.pack(anchor= NW)
+        LerNome = Entry(dois)
+        LerNome.pack(anchor = NW)
+
+        DV = Label(dois,text="Data de vencimento:", background= "#fff0f5", anchor=W, justify=LEFT)
+        DV.pack(anchor= NW)
+        LerDV = Entry(dois)
+        LerDV.pack(anchor = NW)
+
+        ValorCM = Label(dois,text="Valor:", background= "#fff0f5", anchor=W, justify=LEFT)
+        ValorCM.pack(anchor= NW)
+        LerValorCM = Entry(dois)
+       # LerValorCM = Text(dois, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerValorCM.pack(anchor = NW)
+
+        IDCliente = Label(dois,text="Identificação do usuário:", background= "#fff0f5", anchor=W, justify=LEFT)
+        IDCliente.pack(anchor= NW)
+        LerIDCliente = Entry(dois)
+       # LerIDCliente = Text(dois, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerIDCliente.pack(anchor = NW)
+        
+
+    def OnButtonClickTres(self):
+        tres = Toplevel(background= "#e6e6fa")
+        tres.title("Lucro")
+        tres.geometry("300x380")
+        tres.transient(self)
+
+        tresButton = Button(tres, text="FECHAR TUDO",width= 13, command = self.destroy)
+        tresButton.pack(side= BOTTOM)
+
+        bt1= Button(tres,background= "#fffacd",width= 13, text = "Salvar")
+        bt1.pack(side= BOTTOM)
+
+        bt2= Button(tres,background= "#fffacd",width= 13, text = "Editar")
+        bt2.pack(side= BOTTOM)
+
+        bt3= Button(tres,background= "#fffacd",width= 13, text = "Consultar")
+        bt3.pack(side= BOTTOM)
+
+        bt4= Button(tres,background= "#fffacd",width= 13, text = "Inativar")
+        bt4.pack(side= BOTTOM)
+
+        
+        IDLucro = Label(tres,text="Código:", background= "#e6e6fa", anchor=W, justify=LEFT)
+        IDLucro.pack(anchor= NW)
+        LerIDLucro = Entry(tres)
+     #   LerIDLucro = Text(tres, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerIDLucro.pack(anchor = NW)
+
+        SD = Label(tres,text="(+$) Soma arrecadada:",background= "#e6e6fa")
+        SD.pack(anchor= NW)
+        LerSD = Entry(tres)
+        LerSD.pack(anchor= NW)
+        
+        ValorFP = Label(tres,text="(-$) Valor em Finanças Pessoais:", background= "#e6e6fa", anchor=W, justify=LEFT)
+        ValorFP.pack(anchor= NW)
+        LerValorFP = Entry(tres)
+      #  LerValorFP = Text(tres, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerValorFP.pack(anchor = NW)
+
+        SomaPrejuizo = Label(tres,text="(-$) Soma em prejuízos :",background= "#e6e6fa",)
+        SomaPrejuizo.pack(anchor= NW)
+        LerSomaPrejuizo = Entry(tres)
+     #   LerSomaPrejuizo = Text(tres, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerSomaPrejuizo.pack(anchor = NW)
+
+        ValorCM = Label(tres,text="(-$) Valor da manutenção da loja:", background= "#e6e6fa", anchor=W, justify=LEFT)
+        ValorCM.pack(anchor= NW)
+        LerValorCM = Entry(tres)
+      #  LerValorCM = Text(tres, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerValorCM.pack(anchor = NW)
+
+        lblLucroCalculado = Label(tres,text="(= $) Lucro calculado:", background= "#e6e6fa", anchor=W, justify=LEFT)
+        lblLucroCalculado.pack(anchor= NW)
+        LerLucroCalculado = Entry(tres)
+      #  LerLucroCalculado = Text(tres, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerLucroCalculado.pack(anchor = NW)
+
+
+    def OnButtonClickQuatro(self):
+        quatro = Toplevel(background="#ffebcd")
+        quatro.title("Finanças Pessoais")
+        quatro.geometry("300x350")
+
+        quatro.transient(self)
+
+        quatroButton = Button(quatro, text="FECHAR TUDO",width= 13, command = self.destroy)
+        quatroButton.pack(side= BOTTOM)
+
+# botões basicos vinculados ao banco
+
+        bt1= Button(quatro,background= "#fffacd",width= 13, text = "Salvar")
+        bt1.pack(side= BOTTOM)
+
+        bt2= Button(quatro,background= "#fffacd",width= 13, text = "Editar")
+        bt2.pack(side= BOTTOM)
+
+        bt3= Button(quatro,background= "#fffacd",width= 13, text = "Consultar")
+        bt3.pack(side= BOTTOM)
+
+        bt4= Button(quatro,background= "#fffacd",width= 13, text = "Inativar")
+        bt4.pack(side= BOTTOM)
+
+        CodigoFP = Label(quatro,text="Código do registro de despesa:", background= "#ffebcd", anchor=W, justify=LEFT) #identity
+        CodigoFP.pack(anchor= NW)
+        LerCodigoFP = Entry(quatro)
+       #LerCodigoFP = Text(quatro, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerCodigoFP.pack(anchor = NW)
+
+        Nome = Label(quatro,text="Descrição da despesa:", background= "#ffebcd", anchor=W, justify=LEFT)
+        Nome.pack(anchor= NW)
+        LerNome = Entry(quatro)
+        LerNome.pack(anchor = NW)
+
+        DV = Label(quatro,text="Data de vencimento:", background= "#ffebcd", anchor=W, justify=LEFT)
+        DV.pack(anchor= NW)
+        LerDV = Entry(quatro)
+        LerDV.pack(anchor = NW)
+
+        ValorFP = Label(quatro,text="Valor:", background= "#ffebcd", anchor=W, justify=LEFT)
+        ValorFP.pack(anchor= NW)
+        LerValorFP = Entry(quatro)
+        LerValorFP.pack(anchor = NW)
+
+        User = Label(quatro,text="Identificação do usuário:", background= "#ffebcd", anchor=W, justify=LEFT) #aqui o usuario pode colocar só o primeiro nome
+        User.pack(anchor= NW)
+        LerUser = Entry(quatro)
+        LerUser.pack(anchor = NW)
+
+        Soma = Label(quatro,text="Soma das despesas que vencem no mesmo mês:", background= "#ffebcd", anchor=W, justify=LEFT)
+        Soma.pack(anchor= NW)
+        LerSoma = Entry(quatro)
+        LerSoma.pack(anchor = NW)
+
+    def OnButtonClickCinco(self):
+        cinco = Toplevel(background="#fff0f5")
+        cinco.title("Cliente")
+        cinco.geometry("300x450")
+
+        cinco.transient(self)
+
+        cincoButton = Button(cinco, text="FECHAR TUDO",width= 13, command = self.destroy)
+        cincoButton.pack(side= BOTTOM)
+
+        bt1= Button(cinco,background= "#fffacd",width= 13, text = "Salvar")
+        bt1.pack(side= BOTTOM)
+
+        bt2= Button(cinco,background= "#fffacd",width= 13, text = "Editar")
+        bt2.pack(side= BOTTOM)
+
+        bt3= Button(cinco,background= "#fffacd",width= 13, text = "Consultar")
+        bt3.pack(side= BOTTOM)
+
+        bt4= Button(cinco,background= "#fffacd",width= 13, text = "Inativar")
+        bt4.pack(side= BOTTOM)
+
+        btCondicional= Button(cinco,width= 33, text = "Acessar Condicional do Cliente")
+        btCondicional.pack(side= TOP)
+
+        IDCliente = Label(cinco,text="Código:", background= "#fff0f5", anchor=W, justify=LEFT) # identity
+        IDCliente.pack(anchor= NW)
+        #LerIDCliente = Text(cinco, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerIDCliente = Entry(cinco)
+        LerIDCliente.pack(anchor = NW)  
+
+        Nome = Label(cinco,text="Nome:", background= "#fff0f5", anchor=W, justify=LEFT)
+        Nome.pack(anchor= NW)
+        LerNome = Entry(cinco)
+        LerNome.pack(anchor = NW)
+
+        Endereco = Label(cinco,text="Rua/número:", background= "#fff0f5", anchor=W, justify=LEFT)
+        Endereco.pack(anchor= NW)
+        LerEnd1 = Entry(cinco)
+        LerEnd1.pack(anchor = NW)
+
+        Endereco2 = Label(cinco,text="Bairro:", background= "#fff0f5", anchor=W, justify=LEFT)
+        Endereco2.pack(anchor= NW)
+        LerEnd2 = Entry(cinco)
+        LerEnd2.pack(anchor = NW)
+
+        Telefone = Label(cinco,text="Telefone:", background= "#fff0f5", anchor=W, justify=LEFT)
+        Telefone.pack(anchor= NW)
+        LerTelefone = Entry(cinco)
+        LerTelefone.pack(anchor = NW)
+
+        CPF = Label(cinco,text="CPF:", background= "#fff0f5", anchor=W, justify=LEFT)
+        CPF.pack(anchor= NW)
+        LerCPF = Entry(cinco)
+        LerCPF.pack(anchor = NW)
+
+        Nascimento = Label(cinco,text="Data de Nascimento:", background= "#fff0f5", anchor=W, justify=LEFT)
+        Nascimento.pack(anchor= NW)
+        LerNascimento = Entry(cinco)
+        LerNascimento.pack(anchor = NW)
+
+                ## vai se ligar à  janela do condicional - criar função aqui
+  
+    def OnButtonClickSeis(self):
+        seis = Toplevel(background="#f5deb3")
+        seis.title("Condicional")
+        seis.geometry("300x585")
+
+        seis.transient(self)
+
+        seisButton = Button(seis, text="FECHAR TUDO",width= 13, command = self.destroy)
+        seisButton.pack(side= BOTTOM)
+
+        bt1= Button(seis,background= "#fffacd",width= 13, text = "Salvar")
+        bt1.pack(side= BOTTOM)
+
+        bt2= Button(seis,background= "#fffacd",width= 13, text = "Editar")
+        bt2.pack(side= BOTTOM)
+
+        bt3= Button(seis,background= "#fffacd",width= 13, text = "Consultar")
+        bt3.pack(side= BOTTOM)
+
+        bt4= Button(seis,background= "#fffacd",width= 13, text = "Inativar")
+        bt4.pack(side= BOTTOM)
+
+
+        btCli= Button(seis,width= 33, text = "Acessar Cadastro do Cliente")
+        btCli.pack(side= TOP)
+
+        ID = Label(seis,text="ID:", background= "#f5deb3", anchor=W, justify=LEFT) #identity
+        ID.pack(anchor= NW)
+        LerID = Entry(seis)
+        LerID.pack(anchor = NW)
+
+        DH = Label(seis,text="Data/ Hora:", background= "#f5deb3", anchor=W, justify=LEFT)
+        DH.pack(anchor= NW)
+        LerDH = Entry(seis)
+        #LerDH = Text(seis, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerDH.pack(anchor = NW)
+
+        IDCli = Label(seis,text="Código do Cliente:", background= "#f5deb3", anchor=W, justify=LEFT)
+        IDCli.pack(anchor= NW)
+        LerIDCli = Entry(seis)
+        LerIDCli.pack(anchor = NW)
+
+        QR = Label(seis,text="Qtde Retirada:", background= "#f5deb3", anchor=W, justify=LEFT)
+        QR.pack(anchor= NW)
+        LerQR = Entry(seis)
+        LerQR.pack(anchor = NW)
+
+        
+# while (i < QR) cadastra uma nova saída de produto em condicional, até o looping chegar ao numero da Qtde Retirada de peças
+################# Looping ##############################
+
+        Descricao = Label(seis,text="Descrição da Peça:", background= "#f5deb3", anchor=W, justify=LEFT)
+        Descricao.pack(anchor= NW)
+        LerDescricao = Entry(seis)
+        LerDescricao.pack(anchor = NW)  
+
+        Preco = Label(seis,text="Preço:", background= "#f5deb3", anchor=W, justify=LEFT)
+        Preco.pack(anchor= NW)
+        LerPreco = Entry(seis)
+        LerPreco.pack(anchor = NW)
+
+
+################# Fim Looping ##############################
+       
+#status
+        var1 = IntVar()
+        var2 = IntVar()
+        var3 = IntVar()
+
+        Status = Label(seis,text="Status:", background= "#f5deb3", anchor=W, justify=LEFT)
+        Status.pack(anchor= NW)
+
+        status=[('aguardando', 1), ('enviado', 2), ('devolvido', 3)]
+        var = IntVar()
+        for text, value in status:
+            Radiobutton(seis, text=text, value=value, variable=var, background= "#f5deb3").pack(anchor=W)
+        var.set(3)
+  
+        QA = Label(seis,text="Qtd Adquirida pelo cliente:", background= "#f5deb3", anchor=W, justify=LEFT)
+        QA.pack(anchor= NW)
+        LerQA = Entry(seis)
+        LerQA.pack(anchor = NW)
+
+        Total = Label(seis,text="Total em vendas:", background= "#f5deb3", anchor=W, justify=LEFT) #Total diário em dinheiro,das condicionais q viraram vendas feitas
+        Total.pack(anchor= NW)
+        LerTotal = Entry(seis)
+        LerTotal.pack(anchor = NW)
+
+                        ## vai se ligar à  janela do cliente - criar função aqui
+
+    def OnButtonClickSete(self):            
+        sete = Toplevel(background="#ffebcd")
+        sete.title("Prejuízos")
+        sete.geometry("300x380")
+
+        sete.transient(self)
+
+        seteButton = Button(sete, text="FECHAR TUDO",width= 13, command = self.destroy)
+        seteButton.pack(side= BOTTOM)
+
+        bt1= Button(sete,background= "#fffacd",width= 13, text = "Salvar")
+        bt1.pack(side= BOTTOM)
+
+        bt2= Button(sete,background= "#fffacd",width= 13, text = "Editar")
+        bt2.pack(side= BOTTOM)
+
+        bt3= Button(sete,background= "#fffacd",width= 13, text = "Consultar")
+        bt3.pack(side= BOTTOM)
+
+        bt4= Button(sete,background= "#fffacd",width= 13, text = "Inativar")
+        bt4.pack(side= BOTTOM)
+
+        IDPrejuizo = Label(sete,text="ID:", background= "#ffebcd", anchor=W, justify=LEFT) #identity
+        IDPrejuizo.pack(anchor= NW)
+        LerIDPrejuizo = Entry(sete)
+       # LerID = Text(sete, width=15, height=1.3, bd=1, relief = RIDGE)
+        LerIDPrejuizo.pack(anchor = NW)
+
+        Data = Label(sete,text="Data:",background= "#ffebcd")
+        Data.pack(anchor= NW)
+        LerData = Entry(sete)
+        LerData.pack(anchor = NW)    
+        
+        VE = Label(sete,text="Valores estornados:", background= "#ffebcd")
+        VE.pack(anchor= NW)
+        LerVE = Entry(sete,background= "lightblue")
+        LerVE.pack(anchor = NW)
+
+        Qtd = Label(sete,text="Valor em peças danificadas:",background= "#ffebcd",)
+        Qtd.pack(anchor= NW)
+        LerQtd = Entry(sete,background= "lightblue")
+        LerQtd.pack(anchor = NW)
+
+        VD = Label(sete,text="Valor Descontado:",background= "#ffebcd",)
+        VD.pack(anchor= NW)
+        LerVD = Entry(sete,background= "lightblue")
+        LerVD.pack(anchor = NW)
+
+        SomaPrejuizo = Label(sete,text="Soma em prejuízos :",background= "#ffebcd",)
+        SomaPrejuizo.pack(anchor= NW)
+        LerSomaPrejuizo = Entry(sete)
+        LerSomaPrejuizo.pack(anchor = NW)
+
+
+    def OnButtonClickOito(self):
+        oito = Toplevel()
+        oito.title("Relatório Mensal")
+        oito.geometry("300x150")
+
+        oito.transient(self)
+
+        oitoButton = Button(oito, text="FECHAR TUDO",width= 13, command = self.destroy)
+        oitoButton.pack(side= BOTTOM)
+
+
+        btPrejuizo= Button(oito,background= "#fffacd",width= 30, text = "Consultar formulários de Prejuízo") #consultar do banco
+        btPrejuizo.pack(side= TOP)
+
+        btArrecadacao= Button(oito,background= "#fffacd",width= 30, text = "Consultar formulários de Arrecadação")
+        btArrecadacao.pack(side=TOP, anchor= CENTER, expand=YES )
+
+        btLucro= Button(oito,background= "#fffacd",width= 30, text = "Consultar formulários de Lucro")
+        btLucro.pack(side= BOTTOM, expand=YES)
+    
+
+ 
+
+if __name__ == "__main__":
+    window = Window(None)
+
+    window.title("Anadré - APOIO FINANCEIRO")
+
+    window.mainloop()
+
