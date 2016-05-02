@@ -1,5 +1,5 @@
 A Camada de Negócios (ou a Model), para as oito Interface-Child: regra de inserção no botão Salvar para colocar dados no MySQl Workbench, 
-regra de Alteração dos dados salvos no botão Editar, comando para inativar formulario sem excluir (no botão inativar), e select no consultar.
+regra de Alteração dos dados salvos no botão Editar, comando para inativar formulario sem excluir (no botão Deletar), e select no consultar.
 A camada de negócios se comunica com todas as outras três (Apresentacao, OT que é get e set, AcessoDados) e com o banco.
 Fazer captura de erro (try catch)
 
