@@ -1,0 +1,55 @@
+I - DESCRIÇÃO DO ESCOPO DO PROJETO
+
+O Sistema Anadré- Apoio Financeiro tem por objetivo atuar como uma ferramenta para o processo de gerenciamento de gastos, a fim de calcular lucros.  Fornece uma maneira intuitiva e eficiente para realizar cálculos e cadastros adequados a uma empresa. Utilizando-o, o usuário _ em geral, empresários _ poderá cadastrar movimentações de capital e mercadoria. 
+ Além disso, poderá editar, ativar/inativar e consultar os arquivos/campos criados e preenchidos neste programa. Tais arquivos são manipuláveis através da ferramenta de banco de dados (MySql).
+ O aplicativo poderá ser testado pelo próprio usuário que, posterior ao uso, será capaz de responder a um questionário sobre a usabilidade do programa, procedimento cabível para melhorar a qualidade do processo de desenvolvimento dos projetos de software.
+ 
+II – REQUISITOS FUNCIONAIS
+
+1 – O sistema deve permitir o cadastro, alteração e inativação de “Saídas de Condicional”,  com os seguintes atributos: ID ,data, hora, quantidade retirada, descrição da peça, preço peça, quantidade adquirida, código do cliente, status: aguardando/enviado/devolvido, total em vendas.
+
+2 – O sistema deve permitir o cadastro, alteração e inativação de “Clientes com  Condicional”, controle preenchido diariamente, com os seguintes atributos: ID do cliente, nome, cpf, endereço, telefone, ID da condicional.
+
+3 – O sistema deve permitir o cadastro, alteração e inativação de “Prejuízos”, com: ID, data, valores estornados, Valor em Descontos, Valor em peças danificadas, Somatória
+
+4 –  O sistema deve permitir o cálculo de “Custos de Manutenção”, controle preenchido mensalmente, com : Código, Pagamento de fornecedor ,pagamento de funcionário ,energia ,internet , telefone ,água , aluguel , gastos com viagem à trabalho ,recarga de celular ,Somatória 
+
+5 – O sistema deve permitir o cálculo de “Arrecadação Bruta”, com os seguintes atributos: Código, data/hora, nome do cliente, código do produto, valor unitário, quantidade ,Subtotal, Valor Descontado, Valor Final da venda, Soma vendida no dia 
+
+6 – O sistema deve permitir o cálculo de “Lucro Líquido”, controle preenchido mensalmente,   com os seguintes atributos: código, soma da arrecadação, soma dos custos, soma dos prejuízos, soma de finanças pessoais, lucro calculado.
+
+7 – O sistema deve permitir o cálculo de “Finanças Pessoais”, controle preenchido mensalmente,   com :Mês, Energia, Internet , Água,  Telefone ,   Lazer  , Alimentação , Farmácia, Plano de  Saúde, Pet shop,  IPTU/Aluguel, IPVA , Combustível,   Outros gastos, Somatória 
+
+8- Relatório 1: O sistema deve permitir a emissão de relatório de prejuízos do último mês.
+
+9- Relatório 2:  O sistema deve permitir a emissão de relatório de arrecadação bruta do último mês.
+
+10- Relatório 3: O sistema deve permitir a emissão de relatório de lucro real do último mês.
+
+
+III – REQUISITOS NÃO-FUNCIONAIS
+
+Eficiência
+
+11-  O tempo de resposta do programa deve ser de menos de 5 segundos
+
+Usabilidade 
+
+12 - O sistema deve ter interface agradável e de fácil utilização: intuitivo, dispensa manual do usuário, com nomes bem claros para as funcionalidades. 
+
+
+Hardware e Software
+
+13 - Visando criar um produto com maior organização, manutenibilidade, reusabilidade e flexibilidade, deve ser adotar como linguagem principal de desenvolvimento o Python seguindo cuidadosamente as técnicas de orientação a objetos.
+
+14- O sistema operacional em que o programa será executado é o Windows 7 Ultimate. E essa máquina deverá se comunicar com o sistema de banco de dados.
+
+	
+15 - O Banco de Dados deve ser mantido somente no computador servidor, cujo sistema operacional também é o Windows 7 Ultimate , há apenas um servidor físico e uma máquina cliente, com o mesmo sistema operacional .
+
+
+Segurança
+
+16 - O sistema deve possuir senhas de acesso e identificação para os usuários do sistema, pois a base de dados deve ser protegida para acesso apenas de usuários autorizados.
+
+17 - O sistema deve manter o log de alterações dos cadastros. 
