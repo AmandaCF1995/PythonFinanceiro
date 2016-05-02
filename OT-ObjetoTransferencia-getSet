@@ -1,0 +1,85 @@
+# Camada do Get Set - Objeto Transferência
+#import Apresentacao # importação que não está funcionando
+#from Tkinter import *
+import gettext
+from datetime import *
+from math import *
+#import OT.py
+#import Negocios.py
+#import AcessoDados.py
+import sys
+from random import *
+import StringIO
+
+#inicializa variavel
+LerDataHora = Apresentacao.LerDataHora
+LerNovo = Apresentacao.LerNovo
+LerCodProduto = Apresentacao.LerCodProduto
+LerVU = Apresentacao.LerVU
+LerQtd = Apresentacao.LerQtd
+LerSubtotal = Apresentacao.LerSubtotal
+
+class um(object): #Arrecadação Bruta  # "um" é o nome da tela
+       def __init__(self, LerDataHora, LerNovo, LerCodProduto, LerVU, LerQtd, LerSubtotal, LerVD, LerVF, LerSD):
+
+#Tipos - Int Float String List Tupla dicionary
+
+#o codigo é auto incremental (identity)
+        
+          LerDataHora = 0               #setar
+          um = LerDataHora()            #pegar
+          um.LerDataHora = LerDataHora  #setar
+          def LerDataHora(datetime):
+           pass                         #pegar
+
+          LerNovo = 0
+          um = LerNovo()
+          um.LerNovo = LerNovo
+          def LerNovo(var):
+           pass
+
+          
+          LerCodProduto = 0
+          um = LerCodProduto()
+          um.LerCodProduto = LerCodProduto
+          def LerCodProduto(int):
+           pass
+
+          LerVU = 0
+          um = LerVU()
+          um.LerVU = LerVU
+          def LerVU(String):
+           pass
+
+
+          LerQtd = 0
+          um = LerQtd()
+          um.LerQtd = LerQtd
+          def LerQtd(String):
+           pass
+
+          LerSubtotal = 0
+          um = LerSubtotal()
+          um.LerSubtotal = LerSubtotal
+          def LerSubtotal(String):
+           pass
+       
+          LerVD = 0
+          um = LerVD()
+          um.LerVD = LerVD
+          def LerVD(String):
+           pass
+
+          LerVF = 0
+          um = LerVF()
+          um.LerVF = LerVF
+          def LerVF(String):
+           pass
+
+          LerSD = 0
+          um = LerSD()
+          um.LerSD = LerSD
+          def LerSD(String):          # def metodo(tipo):
+           pass
+
+#abaixo virão aos get set das telas "dois" até "sete"
